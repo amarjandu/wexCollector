@@ -4,12 +4,11 @@ from pymongo import MongoClient
 
 
 configuration = toml.load('config/config.toml', _dict=dict)
-dbUrl = "mongodb://" + configuration['mongoAuth']['Neptune']['userName'] + ":" + configuration['mongoAuth']['Neptune']['pwd'] +  "@localhost/test"
+dbUrl = "mongodb://" + configuration['mongoAuth']['Neptune']['userName'] + ":" + configuration['mongoAuth']['Neptune']['pwd'] +  "@localhost/admin"
 
 client = MongoClient(dbUrl);
-
-db = client['wexCollection']
-posts = db.posts
+db = client['test']
+posts = db.wexCollection
 
 baseURL = "https://wex.nz/api/3/ticker/"
 passedData = []
@@ -21,8 +20,9 @@ def get_prices(sc):
     passedData.insert(3, requests.get(url=baseURL+"ltc_usd").json() )
     passedData.insert(4, requests.get(url=baseURL+"bch_btc").json() )
     passedData.insert(5, requests.get(url=baseURL+"bch_usd").json() )
-    results = posts.insert_many(passedData);
+    results = posts.insert_many(passedData)
     pprint.pprint(results.inserted_ids)
+    passedData.clear()
     scheduler.enter(2,1,get_prices,(sc,))
 
 print("requesting Data: ")
