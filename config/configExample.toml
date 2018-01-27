@@ -4,11 +4,11 @@ title = "Toml Config for Mongo"
 name = ""
 
 
-[apiKeys]
-    [apiKeys.wex]
-    key = ""
-    secret = "" 
-    nonce = 
+[mongoAuth]
+    [mongoAuth.Neptune]
+    userName = ""
+    pwd = ""  
+    
     
 [sites]
     [sites.wex]
