@@ -1,11 +1,10 @@
-import sched, time, requests, pymongo, pprint, json
+import sched, time, requests, pymongo, pprint, json, toml
 from pymongo import MongoClient
 
 
 
-userName ='amar'
-pwd ='thxadm1ns'
-dbUrl = "mongodb://" + userName + ":" + pwd +  "@localhost/test"
+configuration = toml.load('config/config.toml', _dict=dict)
+dbUrl = "mongodb://" + configuration['mongoAuth']['Neptune']['userName'] + ":" + configuration['mongoAuth']['Neptune']['pwd'] +  "@localhost/test"
 
 client = MongoClient(dbUrl);
 

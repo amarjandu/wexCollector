@@ -1,0 +1,15 @@
+title = "Toml Config for Mongo"
+
+[owner]
+name = ""
+
+
+[apiKeys]
+    [apiKeys.wex]
+    key = ""
+    secret = "" 
+    nonce = 
+    
+[sites]
+    [sites.wex]
+    tradeUrl= "https://wex.nz/tapi"
