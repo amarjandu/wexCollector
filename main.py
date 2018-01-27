@@ -7,8 +7,8 @@ configuration = toml.load('config/config.toml', _dict=dict)
 dbUrl = "mongodb://" + configuration['mongoAuth']['Neptune']['userName'] + ":" + configuration['mongoAuth']['Neptune']['pwd'] +  "@localhost/admin"
 
 client = MongoClient(dbUrl);
-db = client['test']
-posts = db.wexCollection
+db = client[configuration['mongoConfig']['db']]
+posts = db.configuration['mongoConfig']['collection']
 
 baseURL = "https://wex.nz/api/3/ticker/"
 passedData = []
