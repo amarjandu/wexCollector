@@ -16,3 +16,6 @@ name = ""
 [sites]
     [sites.wex]
     tradeUrl= "https://wex.nz/tapi"
+
+[scheduler]
+    secondDelay = "30"

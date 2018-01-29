@@ -23,8 +23,8 @@ def get_prices(sc):
     results = posts.insert_many(passedData)
     pprint.pprint(results.inserted_ids)
     passedData.clear()
-    scheduler.enter(2,1,get_prices,(sc,))
+    scheduler.enter(configuration['scheduler']['secondDelay'],1,get_prices,(sc,))
 
 print("requesting Data: ")
-scheduler.enter(2,1,get_prices,(scheduler,))
+scheduler.enter(configuration['scheduler']['secondDelay'],1,get_prices,(scheduler,))
 scheduler.run()
